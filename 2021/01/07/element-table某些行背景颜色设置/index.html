@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>归档</title>
+    <title>element table某些行背景颜色设置</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/Monda.css">
@@ -17,55 +17,94 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/js/jquery-3.4.1.min.js"></script>
+
 <meta name="generator" content="Hexo 5.3.0"></head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">element table某些行背景颜色设置</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2021-01-07
+                        </span>
+                        
+                            <span id="/2021/01/07/element-table某些行背景颜色设置/" class="leancloud_visitors" data-flag-title="element table某些行背景颜色设置">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/01/07/element-table某些行背景颜色设置/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-          
-    <div class="articles-year">
-        <h2>2021</h2>
-        <ul class="list">
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <p>&lt;el-table<br>:data=”tableData”<br>v-loading=”loading”<br>:row-class-name=”tableRowClassName”<br>ref=”multipleTable”<br>class=”bgf”<br>border<br>header-row-class-name=”lm-header-row”<br>cell-class-name=”lm-cell”<br>style=”width: 100%;”</p>
+<blockquote>
+</blockquote>
+<p>：row-class-name 是设置的关键 table 我就不写全了，比较麻烦</p>
+<p>tableRowClassName({row}){<br>console.log(row.reply_status);<br>if(row.reply_status === 2){<br>return ‘warning-row’;<br>}<br>},</p>
+<p>row 是获取到某一行的数据 reply_status 是我列表数据中的一个字段用来判断哪些行需要颜色改变</p>
+<p>改变 css 样式<br>/deep/.el-table .warning-row {<br>background: rgba(0,255,255, 0.5);<br>}</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="https://cdn.zouliang.net/uploads/20210106/f29d170cd9ff0f5646f04ed35cb60cad.jpg" alt="Heart of memories">
+            </div>
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Heart of memories
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/01/07/element-table%E6%9F%90%E4%BA%9B%E8%A1%8C%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/" target="_blank">element table某些行背景颜色设置</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：简单地活着, 肆意又精彩.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div class="article-footer">
+        
+        
+        <div class="article-prev-next">
             
-                <li>
-                    <span class="date">2021/01/07</span>
-                    <a href="/2021/01/07/element-table%E6%9F%90%E4%BA%9B%E8%A1%8C%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/" title="element table某些行背景颜色设置">    
-                        <span>element table某些行背景颜色设置</span>
-                    </a>
-                </li>
             
-                <li>
-                    <span class="date">2021/01/05</span>
-                    <a href="/2021/01/05/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%81%E4%B8%BD%E4%B8%BD/" title="你好啊，丁丽丽">    
-                        <span>你好啊，丁丽丽</span>
-                    </a>
-                </li>
+                <a href="/2021/01/05/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%81%E4%B8%BD%E4%B8%BD/" class="next-prefix">» </a> 下一篇：    <a href="/2021/01/05/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E4%B8%81%E4%B8%BD%E4%B8%BD/" title="发布于 2021-01-05 05:37">你好啊，丁丽丽</a>
             
-        </ul>
+        </div>
+    </div>
+    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
     </div>
 
+</div>
 
     </div>
 </div>
