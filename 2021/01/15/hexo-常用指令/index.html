@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>chrome浏览器缓存 from disk cache</title>
+    <title>hexo 常用指令</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">chrome浏览器缓存 from disk cache</h1>
+                <h1 class="header-subtitle">hexo 常用指令</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2021-01-13
+                            <i class="iconfont icon-time"></i> 发表时间：2021-01-15
                         </span>
                         
-                            <span id="/2021/01/13/chrome浏览器缓存-from-disk-cache/" class="leancloud_visitors" data-flag-title="chrome浏览器缓存 from disk cache">
+                            <span id="/2021/01/15/hexo-常用指令/" class="leancloud_visitors" data-flag-title="hexo 常用指令">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/01/13/chrome浏览器缓存-from-disk-cache/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/01/15/hexo-常用指令/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,65 +57,13 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <p><strong>接口出现status:200 (from disk cache)，之前从没遇见过，在此记录一下。解决办法：只要清除浏览器缓存（更多工具 =&gt; 清除浏览器数据 =&gt; 高级）即可</strong></p>
-<ul>
-<li><p><strong>200 form memory cache</strong><br>不访问服务器，一般已经加载过该资源且缓存在了内存当中，直接从内存中读取缓存。<strong>浏览器关闭后，数据将不存在</strong>（资源被释放掉了），再次打开相同的页面时，不会出现from memory cache。</p>
-</li>
-<li><p><strong>200 from disk cache</strong><br>不访问服务器，已经在之前的某个时间加载过该资源，直接从硬盘中读取缓存，<strong>关闭浏览器后，数据依然存在</strong>，此资源不会随着该页面的关闭而释放掉下次打开仍然会是from disk cache。</p>
-</li>
-<li><p><strong>304 Not Modified</strong><br>访问服务器，发现数据没有更新，服务器返回此状态码。然后从缓存中读取数据。</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="left">状态</th>
-<th align="left">类型</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">200</td>
-<td align="left">form memory cache</td>
-<td align="left">不访问服务器，直接读缓存，从内存中读取缓存。此时的数据时缓存到内存中的，当kill进程后，也就是浏览器关闭以后，数据将不存在。但是这种方式只能缓存派生资源</td>
-</tr>
-<tr>
-<td align="left">200</td>
-<td align="left">form disk cache</td>
-<td align="left">不请求网络资源（服务器），直接从磁盘中读取缓存，当kill进程时，数据还是存在。</td>
-</tr>
-<tr>
-<td align="left">200</td>
-<td align="left">资源大小数值</td>
-<td align="left">从服务器下载最新资源</td>
-</tr>
-<tr>
-<td align="left">304</td>
-<td align="left">报文大小</td>
-<td align="left">请求服务端，返回304，发现资源没更新，然后从缓存中读取数据， 困惑点，服务器如何判断from memory cache还是304</td>
-</tr>
-</tbody></table>
-<h2 id="三级缓存原理"><a href="#三级缓存原理" class="headerlink" title="三级缓存原理"></a>三级缓存原理</h2><p>\1. 先去内存看，如果有，直接加载</p>
-<p>\2. 如果内存没有，择取硬盘获取，如果有直接加载</p>
-<p>\3. 如果硬盘也没有，那么就进行网络请求</p>
-<p>\4. 加载到的资源缓存到硬盘和内存</p>
-<p>比如：访问图片-&gt; 200 -&gt; 退出浏览器</p>
-<p>再进来-&gt; 200(from disk cache) -&gt; 刷新 -&gt; 200(from memory cache)</p>
-<h2 id="http-header"><a href="#http-header" class="headerlink" title="http header"></a>http header</h2><p><strong>max-age</strong></p>
-<p>web中的文件被用户访问(请求)后的存活时间,是个相对的值,相对Request_time(请求时间)</p>
-<p><strong>Expires</strong></p>
-<p>Expires指定的时间根据服务器配置可能有两种：</p>
-<p>\1. 文件最后访问时间</p>
-<p>\2. 文件绝对修改时间</p>
-<p>如果max-age和Expires同时存在，则被Cache-Control的max-age覆盖</p>
-<p><strong>last-modified</strong></p>
-<p>WEB 服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间</p>
-<p><strong>ETag</strong></p>
-<p>对象（比如URL）的标志值，就一个对象而言，文件被修改，Etag也会修改</p>
-<p><strong>Cache-Control</strong></p>
-<p>简单理解，强缓存</p>
-<h6 id="结论：所以实际应用中，遇到资源更新之后，还是有缓存的情况，除了刷新cdn，还要检查下是否有设置http响应头，做对应的缓存过期时间处里，如果没有做缓存过期策略，如果客户端缓存的资源，并且走了-disk-cache，可能怎么刷新都没办法获取最新的资源。"><a href="#结论：所以实际应用中，遇到资源更新之后，还是有缓存的情况，除了刷新cdn，还要检查下是否有设置http响应头，做对应的缓存过期时间处里，如果没有做缓存过期策略，如果客户端缓存的资源，并且走了-disk-cache，可能怎么刷新都没办法获取最新的资源。" class="headerlink" title="结论：所以实际应用中，遇到资源更新之后，还是有缓存的情况，除了刷新cdn，还要检查下是否有设置http响应头，做对应的缓存过期时间处里，如果没有做缓存过期策略，如果客户端缓存的资源，并且走了 disk cache，可能怎么刷新都没办法获取最新的资源。"></a>结论：所以实际应用中，遇到资源更新之后，还是有缓存的情况，除了刷新cdn，还要检查下是否有设置http响应头，做对应的缓存过期时间处里，如果没有做缓存过期策略，如果客户端缓存的资源，并且走了 disk cache，可能怎么刷新都没办法获取最新的资源。</h6><p>来自网络的一张图结尾：</p>
-<p><img src="http://www.wewyy.com/wp-content/uploads/2020/05/v2-78461056b1ab65ea3ad247309d492d2b_1440w.jpg" alt="img"></p>
+        <h1 id="hexo-常用指令"><a href="#hexo-常用指令" class="headerlink" title="hexo 常用指令"></a>hexo 常用指令</h1><h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p>
+<h3 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h3><p>hexo n “我的博客” == hexo new “我的博客” #新建文章<br>hexo p == hexo publish<br>hexo g == hexo generate#生成<br>hexo s == hexo server #启动服务预览<br>hexo d == hexo deploy#部署</p>
+<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>
+<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p>
+<h3 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h3><p>hexo generate #使用 Hexo 生成静态文件快速而且简单<br>hexo generate –watch #监视文件变动</p>
+<h3 id="完成后部署"><a href="#完成后部署" class="headerlink" title="完成后部署"></a>完成后部署</h3><p>两个命令的作用是相同的<br>hexo generate –deploy<br>hexo deploy –generate<br>hexo deploy -g<br>hexo server -g</p>
+<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #将.deploy目录部署到GitHub</p>
 
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
@@ -125,7 +73,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Heart of memories
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/01/13/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-from-disk-cache/" target="_blank">chrome浏览器缓存 from disk cache</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" target="_blank">hexo 常用指令</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：简单地活着, 肆意又精彩.
                 <br>
@@ -142,11 +90,8 @@
         
         <div class="article-prev-next">
             
-                <a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="发布于 2021-01-15 03:52">hexo 常用指令</a>
-                <br>
             
-            
-                <a href="/2021/01/07/element-table%E6%9F%90%E4%BA%9B%E8%A1%8C%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/" class="next-prefix">» </a> 下一篇：    <a href="/2021/01/07/element-table%E6%9F%90%E4%BA%9B%E8%A1%8C%E8%83%8C%E6%99%AF%E9%A2%9C%E8%89%B2%E8%AE%BE%E7%BD%AE/" title="发布于 2021-01-07 02:51">element table某些行背景颜色设置</a>
+                <a href="/2021/01/13/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-from-disk-cache/" class="next-prefix">» </a> 下一篇：    <a href="/2021/01/13/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-from-disk-cache/" title="发布于 2021-01-13 09:32">chrome浏览器缓存 from disk cache</a>
             
         </div>
     </div>
