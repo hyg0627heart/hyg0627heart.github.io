@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>hexo 常用指令</title>
+    <title>nodemon实现Typescript项目热更新</title>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/LongCang.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/hexo-liveforcode@master/static/font/Monda.css">
@@ -31,19 +31,19 @@
     <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-subtitle">hexo 常用指令</h1>
+                <h1 class="header-subtitle">nodemon实现Typescript项目热更新</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
                             <i class="iconfont icon-time"></i> 发表时间：2021-01-15
                         </span>
                         
-                            <span id="/2021/01/15/hexo-常用指令/" class="leancloud_visitors" data-flag-title="hexo 常用指令">
+                            <span id="/2021/01/15/nodemon实现Typescript项目热更新/" class="leancloud_visitors" data-flag-title="nodemon实现Typescript项目热更新">
                                 <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
                             </span>
                         
                         <span>
-                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/01/15/hexo-常用指令/"></span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2021/01/15/nodemon实现Typescript项目热更新/"></span>
                         </span>  
                     </p>                 
                 </div>
@@ -57,14 +57,26 @@
         <div id="article">
     <div class="toc"></div>
     <div class="article-body">
-        <h1 id="hexo-常用指令"><a href="#hexo-常用指令" class="headerlink" title="hexo 常用指令"></a>hexo 常用指令</h1><h3 id="hexo"><a href="#hexo" class="headerlink" title="hexo"></a>hexo</h3><p>npm install hexo -g #安装<br>npm update hexo -g #升级<br>hexo init #初始化</p>
-<h3 id="简写"><a href="#简写" class="headerlink" title="简写"></a>简写</h3><p>hexo n “我的博客” == hexo new “我的博客” #新建文章<br>hexo p == hexo publish<br>hexo g == hexo generate#生成<br>hexo s == hexo server #启动服务预览<br>hexo d == hexo deploy#部署</p>
-<h3 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h3><p>hexo server #Hexo 会监视文件变动并自动更新，您无须重启服务器。<br>hexo server -s #静态模式<br>hexo server -p 5000 #更改端口<br>hexo server -i 192.168.1.1 #自定义 IP</p>
-<p>hexo clean #清除缓存 网页正常情况下可以忽略此条命令<br>hexo g #生成静态网页<br>hexo d #开始部署</p>
-<h3 id="监视文件变动"><a href="#监视文件变动" class="headerlink" title="监视文件变动"></a>监视文件变动</h3><p>hexo generate #使用 Hexo 生成静态文件快速而且简单<br>hexo generate –watch #监视文件变动</p>
-<h3 id="完成后部署"><a href="#完成后部署" class="headerlink" title="完成后部署"></a>完成后部署</h3><p>两个命令的作用是相同的<br>hexo generate –deploy<br>hexo deploy –generate<br>hexo deploy -g<br>hexo server -g</p>
-<h3 id="模版"><a href="#模版" class="headerlink" title="模版"></a>模版</h3><p>hexo new “postName” #新建文章<br>hexo new page “pageName” #新建页面<br>hexo generate #生成静态页面至public目录<br>hexo server #开启预览访问端口（默认端口4000，’ctrl + c’关闭server）<br>hexo deploy #将.deploy目录部署到GitHub</p>
-
+        <h1 id="nodemon实现Typescript项目热更新"><a href="#nodemon实现Typescript项目热更新" class="headerlink" title="nodemon实现Typescript项目热更新"></a>nodemon实现Typescript项目热更新</h1><p>我们都知道nodemon可以直接用来在开发环境下运行js文件，可以在文件改变时自动刷新和重启服务器。但是最近刚好在学typescript，所以就想使用ts来写，也想达到同样的效果，总结一下方法，大概有如下几种：</p>
+<ul>
+<li><code>nodemon</code>+<code>tsc</code>:</li>
+</ul>
+<p>这个方法很简单，首先通过tsc将我们的ts文件编译到dist目录下，然后再通过nodemon直接运行dist目录下的文件即可。至于ts的输出目录相关配置可在tsconfig.js中设置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsc &amp;&amp; nodemon --watch dist&#x2F;index.js</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<p>但是这种方式有个缺点，就是nodemon只监听了dist目录，可能有时候你修改了源码并不能触发热更新，另外还有个问题就是多了一个dist目录中转，感觉不爽。</p>
+<ul>
+<li><code>nodemon</code>+<code>ts-node</code>:</li>
+</ul>
+<p>命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nodemon  -e  ts,tsx  --exec ts-node  .&#x2F;index.ts&quot;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<p>大概意思就是监听文件增加<code>ts</code>、<code>tsx</code>两种文件类型，使用ts-node运行<code>index.ts</code>文件。</p>
+<p>当然，上述参数是设置在命令行中的，也可以在<code>nodemon.json</code>中设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;verbose&quot;: false,</span><br><span class="line">  &quot;debug&quot;: false,</span><br><span class="line">  &quot;exec&quot;: &quot;ts-node  .&#x2F;index.ts&quot;,</span><br><span class="line">  &quot;ignore&quot;: [</span><br><span class="line">    &quot;mochawesome-report&quot;,</span><br><span class="line">    &quot;node_modules&quot;,</span><br><span class="line">    &quot;.&#x2F;test&quot;,</span><br><span class="line">    &quot;**&#x2F;*.d.ts&quot;,</span><br><span class="line">    &quot;*.test.ts&quot;,</span><br><span class="line">    &quot;*.spec.ts&quot;,</span><br><span class="line">    &quot;fixtures&#x2F;*&quot;,</span><br><span class="line">    &quot;test&#x2F;**&#x2F;*&quot;,</span><br><span class="line">    &quot;docs&#x2F;*&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;events&quot;: &#123;</span><br><span class="line">    &quot;restart&quot;: &quot;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;watch&quot;: [&quot;.&#x2F;app&quot;, &quot;.&#x2F;configs&quot;, &quot;.&#x2F;app.ts&quot;],</span><br><span class="line">  &quot;ext&quot;: &quot;ts tsx&quot;,</span><br><span class="line">  &quot;inspect&quot;: true</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<p>如果有使用到tsx文件，记得在<code>tsconfig.json</code>文件中将jsx取消注释,否则编译时可能会提示错误。</p>
+<p>除了上述两种方法，今天无意中试了下直接使用nodemon来执行ts文件，发现控制台报错了，原谅我是个英语渣，不明白具体说了什么，但是看到了ts-node的身影，果断安装ts-node再试，竟然成功了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nodemon  .&#x2F;index.ts</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<p>但是这样修改了ts文件不会热更新，可以在<code>nodemon.json</code>文件中将<code>ext</code>属性添加上<code>ts</code>就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;restartable&quot;: &quot;rs&quot;,</span><br><span class="line">  &quot;ignore&quot;: [&quot;.git&quot;, &quot;node_modules&#x2F;**&quot;, &quot;client&#x2F;*&quot;, &quot;dist&quot;, &quot;.cache&quot;, &quot;logs&quot;],</span><br><span class="line">  &quot;verbose&quot;: true,</span><br><span class="line">  &quot;execMap&quot;: &#123;</span><br><span class="line">    &quot;&quot;: &quot;node&quot;,</span><br><span class="line">    &quot;js&quot;: &quot;node --harmony&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;events&quot;: &#123;</span><br><span class="line">    &quot;start&quot;: &quot;&quot;,</span><br><span class="line">    &quot;crash&quot;: &quot;&quot;,</span><br><span class="line">    &quot;exit&quot;: &quot;&quot;,</span><br><span class="line">    &quot;restart&quot;: &quot;&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;ext&quot;: &quot;js json ts tsx&quot;,</span><br><span class="line">  &quot;watch&quot;: [&quot;.&#x2F;**&quot;],</span><br><span class="line">  &quot;env&quot;: &#123;</span><br><span class="line">    &quot;NODE_ENV&quot;: &quot;development&quot;,</span><br><span class="line">    &quot;PORT&quot;: &quot;3002&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;legacy-watch&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         <p class="suffix-end">__END__</p>
         <div class="suffix-box">
             <div class="suffix-box-left">
@@ -73,7 +85,7 @@
             <div class="suffix-box-right">
                 <span class="suffix-box-title">文章作者</span>：Heart of memories
                 <br>
-                <span class="suffix-box-title">文章出处</span>：<a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" target="_blank">hexo 常用指令</a>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2021/01/15/nodemon%E5%AE%9E%E7%8E%B0Typescript%E9%A1%B9%E7%9B%AE%E7%83%AD%E6%9B%B4%E6%96%B0/" target="_blank">nodemon实现Typescript项目热更新</a>
                 <br>
                 <span class="suffix-box-title">作者签名</span>：简单地活着, 肆意又精彩.
                 <br>
@@ -90,11 +102,8 @@
         
         <div class="article-prev-next">
             
-                <a href="/2021/01/15/nodemon%E5%AE%9E%E7%8E%B0Typescript%E9%A1%B9%E7%9B%AE%E7%83%AD%E6%9B%B4%E6%96%B0/" class="prev-prefix">« </a> 上一篇：    <a href="/2021/01/15/nodemon%E5%AE%9E%E7%8E%B0Typescript%E9%A1%B9%E7%9B%AE%E7%83%AD%E6%9B%B4%E6%96%B0/" title="发布于 2021-01-15 04:25">nodemon实现Typescript项目热更新</a>
-                <br>
             
-            
-                <a href="/2021/01/13/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-from-disk-cache/" class="next-prefix">» </a> 下一篇：    <a href="/2021/01/13/chrome%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-from-disk-cache/" title="发布于 2021-01-13 09:32">chrome浏览器缓存 from disk cache</a>
+                <a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="next-prefix">» </a> 下一篇：    <a href="/2021/01/15/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="发布于 2021-01-15 03:52">hexo 常用指令</a>
             
         </div>
     </div>
