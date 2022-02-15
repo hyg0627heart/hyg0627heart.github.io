@@ -6,7 +6,7 @@
     <meta name="referrer" content="origin">
     <meta http-equiv="Cache-Control" content="no-transform">
     <meta http-equiv="Cache-Control" content="no-siteapp">
-    <title>归档</title>
+    <title>10个CSS技巧</title>
     <link rel="shortcut icon" href="#"/>
 
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/LongCang.css">
@@ -18,83 +18,160 @@
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/Rosario.css">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/font/UbuntuMono.css">
 
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/post.css">
+    
+        <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/css/normal.css">
+    
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/js/jquery-3.4.1.min.js"></script>
+
 <meta name="generator" content="Hexo 5.4.1"></head>
 <body>
     <a id="cover"></a>
     <div id="header">
-    <div class="header" >
+    <div class="header">
         <div class="vertical">
             <div class="inner">
-                <h1 class="header-title"></h1>
-                <h2 class="header-description" id="hitokoto"></h2>
-                <h3 class="header-info" id="hitokotoAuthor"></h3>
-                <!--
-                <h1 class="header-subtitle"></h1>
-                <p class="header-subinfo"></p>
-                -->
+                <h1 class="header-subtitle">10个CSS技巧</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2022-02-15
+                        </span>
+                        
+                            <span id="/2022/02/15/10个CSS技巧/" class="leancloud_visitors" data-flag-title="10个CSS技巧">
+                                <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                            </span>
+                        
+                        <span>
+                            <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/2022/02/15/10个CSS技巧/"></span>
+                        </span>  
+                    </p>                 
+                </div>
             </div>
         </div>
-        <a class="scroll-down" href="javascript:;" target="_self" data-offset="-45">
-            <span class="hidden">Scroll Down</span>
-            <i class="scroll-down-icon iconfont icon-return"></i>
-        </a>
+        <canvas id="articleHeaderCanvas"></canvas>
     </div>
 </div>
     <div id="container">
     <div id="content">
-          
-    <div class="articles-year">
-        <h2>2022</h2>
-        <ul class="list">
+        <div id="article">
+    <div class="toc"></div>
+    <div class="article-body">
+        <h3 id="可点击区域"><a href="#可点击区域" class="headerlink" title="可点击区域"></a>可点击区域</h3><p>例如，这里有一个按钮。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button id=&quot;btn&quot;&gt;btn&lt;/button&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>然后我们可以为它添加一个伪类。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#btn::before &#123;</span><br><span class="line">  content: &quot;&quot;;</span><br><span class="line">  position: absolute;</span><br><span class="line">  top: -20px;</span><br><span class="line">  right: -20px;</span><br><span class="line">  bottom: -20px;</span><br><span class="line">  left: -20px;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时，如果我们点击按钮周围的区域，我们仍然可以触发按钮的点击事件。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6644ff457bf349d68358d0bd9702d975~tplv-k3u1fbpfcp-watermark.awebp" alt="001.gif"></p>
+<h3 id="平滑滚动"><a href="#平滑滚动" class="headerlink" title="平滑滚动"></a>平滑滚动</h3><p>当页面被<code>#</code>链接滚动时，默认效果是这样的。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1828fcdf692549a0946c4155c6749389~tplv-k3u1fbpfcp-watermark.awebp" alt="002.gif"></p>
+<p>这种突然的跳跃会让人感到不舒服。为了解决这个问题，我们可以使用这个CSS样式：<code>sroll-behavior: smooth</code>。</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/246f8e8d0b5940d5ac9ad39174dfda0a~tplv-k3u1fbpfcp-watermark.awebp" alt="003.gif"></p>
+<h3 id="选择所有文本"><a href="#选择所有文本" class="headerlink" title="选择所有文本"></a>选择所有文本</h3><p>我们的网页经常需要提供一些内容供用户选择，如电话号码、地址、标题等。而这些文字应该是一个整体，我们希望当用户点击部分文字时，剩余的文字会被自动选择。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c7c0c5acdf7f47888fd290384c7397f0~tplv-k3u1fbpfcp-watermark.awebp" alt="004.gif"></p>
+<p>要实现这种效果非常简单，只需使用这个CSS样式：<code>user-select: all</code> 。用户选择的CSS属性控制用户是否可以选择文本。如果它的值是 <code>all</code>，意味着一个元素的所有内容都将被原子化地选择。</p>
+<p>如果你想在文本被选中后添加一些额外的样式，你可以使用<code>::selection</code> 。<code>::selection</code> CSS伪元素将样式应用于文档中被用户突出显示的部分（比如在文本上点击和拖动鼠标）。</p>
+<p>但要记住。只有某些CSS属性可以和<code>::selection</code>一起使用。</p>
+<ul>
+<li><code>color</code></li>
+<li><code>background-color</code></li>
+<li><code>text-decoration</code> 及其相关属性</li>
+<li><code>text-shadow</code></li>
+<li><code>stroke-color</code>, <code>fill-color</code> 和 <code>stroke-width</code></li>
+</ul>
+<h3 id="Cursor"><a href="#Cursor" class="headerlink" title="Cursor"></a>Cursor</h3><p><code>cursor</code> CSS属性设置鼠标指针在一个元素上时要显示的鼠标指针（如果有的话）。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4e31c07eda2a477bb87f099478841d3e~tplv-k3u1fbpfcp-watermark.awebp" alt="005.gif"></p>
+<h3 id="Text-Overflow"><a href="#Text-Overflow" class="headerlink" title="Text Overflow"></a>Text Overflow</h3><p>现在我们来看看 text-overflow 的问题。如果一个文本容器的内容是从服务器返回的，或者是由用户输入的，那么就很难预测这个文本会有多长。</p>
+<p>这个容器有一个固定的宽度和高度，包裹着名字和介绍。</p>
+<p>但如果有些用户的简介太长，就会导致文本溢出容器，使页面看起来很糟糕。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b41f716e11fd4539b4d283d2f0c462f2~tplv-k3u1fbpfcp-watermark.awebp" alt="007.png"></p>
+<p>在这一点上，我们可以将溢出的文本折叠起来。做到这一点就像添加三行CSS样式一样简单。</p>
+<p><code>white-space: nowrap;</code><br><code>overflow: hidden;</code><br><code>text-overflow: ellipsis;</code></p>
+<p><code>white-space: nowrap</code>; 可以使文本不被包起来。然后我们使用<code>overflow: hidden</code>来隐藏溢出的文本。最后，我们使用 <code>text-overflow: ellipsis</code> 在文本的末尾添加一个圆点，向用户表明有一些隐藏的文本。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/535e62e848c0473286cdf893a4059dae~tplv-k3u1fbpfcp-watermark.awebp" alt="008.png"></p>
+<h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><p>现在我们来讨论一下图片的风格。网络应用中使用的图片一般由后端提供。你可能已经与后端开发者达成协议，将图片保持在一个固定的尺寸。然后你写下这样的代码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    .img-list &#123;</span><br><span class="line">      display: flex;</span><br><span class="line">      flex-direction: row;</span><br><span class="line">      list-style: none;</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;ul class=&quot;img-list&quot;&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;img src=&quot;https://miro.medium.com/fit/c/128/128/1*TyRLQdZO7NdPATwSeut8gg.png&quot;&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;img src=&quot;https://miro.medium.com/fit/c/128/128/1*pKOfOAOvx-fWzfITATgGRg.jpeg&quot;&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">    &lt;li&gt;</span><br><span class="line">      &lt;img src=&quot;https://miro.medium.com/fit/c/128/128/1*mXOVdfMwS0IEcjPXiikJkg.png&quot;&gt;</span><br><span class="line">    &lt;/li&gt;</span><br><span class="line">  &lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>而网页看起来是这样的。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/90bdab2fe1e34fe88fb50f750a8fbd77~tplv-k3u1fbpfcp-watermark.awebp" alt="010.png"></p>
+<p>图片的排列与我们所期望的一样。</p>
+<p>通常情况下是没有问题的。但是当我们写代码时，我们不能假设一切都会按照我们的预期发展。我们需要做好充分的准备。如果后端返回的图片不正常，不符合预期的尺寸，可能大也可能小，那么布局就会被打乱。</p>
+<p>你可以用这个替换其中一张图片的链接。</p>
+<p><code>https://miro.medium.com/max/1400/0*zQaS0awtSTOO-JYa.jpg</code></p>
+<p>你会发现，页面突然变得杂乱无章。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c4f47964d0364950a44622c4dee2c10a~tplv-k3u1fbpfcp-watermark.awebp" alt="012.png"></p>
+<p>为了防止这个问题，使我们的页面更加健壮，我们可以设置图片的宽度和高度。这样，我们就不必担心后端返回的图片的大小。</p>
+<p><code>img &#123;</code><br>  <code>width: 128px;</code><br>  <code>height: 128px;</code><br><code>&#125;</code></p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/51c80271e79d4c47b1504aa7073d560c~tplv-k3u1fbpfcp-watermark.awebp" alt="013.png"></p>
+<p>但上述写法有一个缺点：如果图像本身的长宽比与我们设定的长宽比不一致，图像将被压缩或拉伸。</p>
+<p>为了保持图像的原始长宽比，我们可以使用 <code>object-fit: cover</code> 。</p>
+<p><code>img &#123;</code><br>  <code>width: 128px;</code><br>  <code>height: 128px;</code><br>  <code>object-fit: cover;</code><br><code>&#125;</code></p>
+<p><code>object-fit</code> 的CSS属性设置一个被替换的元素的内容，如<code>&lt;img&gt;</code>或<code>&lt;video&gt;</code>，应该如何调整大小以适合其容器。</p>
+<p>如果该值是 <code>cover</code>，那么被替换的内容的大小将保持其长宽比，同时填充元素的整个内容框。如果对象的长宽比与它的盒子的长宽比不一致，那么该对象将被剪掉以适配。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e74ad3ecd9894a01abfe7c73e23be32a~tplv-k3u1fbpfcp-watermark.awebp" alt="014.png"></p>
+<h3 id="无图片"><a href="#无图片" class="headerlink" title="无图片"></a>无图片</h3><p>我们之前讨论的情况都是建立在我们能够得到图片的前提下。但是，在实际应用中，可能由于后端服务的不稳定，或者用户自身的网络信号不好，我们的网页可能无法正确加载图片。</p>
+<p>当图片缺失时，浏览器的默认样式是不优雅的，这里我们可以优化它。</p>
+<p>我们可以给 <code>img</code>元素添加一个 <code>onerror</code> 事件。如果在加载图片时出现了错误，那么我们可以通过 <code>onerro</code>r事件给该元素添加一个样式，并使用404图片。</p>
+<p><code>img</code> 元素:</p>
+<p><code>&lt;img src=&quot;https://miro.medium.com/xxx.jpg&quot; alt=&#39;fireworks picture&#39; onerror=&quot;this.classList.add(&#39;error&#39;);&quot;&gt;</code></p>
+<p>假设这就是我们的404图像:</p>
+<p><code>https://cdn-images-1.medium.com/max/1600/1*we8wfyztsdo12e2Cww6oVA.jpeg</code></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/956f8b8a9c61462b987bbf29d83518ce~tplv-k3u1fbpfcp-watermark.awebp" alt="015.png"></p>
+<p>下面是 css 代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">img.error &#123;</span><br><span class="line">      display: inline-block;</span><br><span class="line">      transform: scale(1);</span><br><span class="line">      content: &#x27;&#x27;;</span><br><span class="line">      color: transparent;</span><br><span class="line">    &#125;</span><br><span class="line">img.error::before &#123;</span><br><span class="line">      content: &#x27;&#x27;;</span><br><span class="line">      position: absolute;</span><br><span class="line">      left: 0;</span><br><span class="line">      top: 0;</span><br><span class="line">      width: 100%;</span><br><span class="line">      height: 100%;</span><br><span class="line">      background: #f5f5f5 url(&#x27;https://cdn-images-1.medium.com/max/1600/1*we8wfyztsdo12e2Cww6oVA.jpeg&#x27;) no-repeat center / 100% 100%;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样，当 <code>img</code> 元素中的图片链接无法加载图片时，我们的404图片将被使用。<br><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/77b927d9823c45e69885fc11b3e80fdb~tplv-k3u1fbpfcp-watermark.awebp" alt="0016.png"></p>
+<p>这里还有一点需要优化。在这种情况下，如果原始图片没有被正确加载，用户就不知道这个图片应该是什么。为了方便用户理解，我们可以将 <code>img</code> 元素的 <code>alt</code> 属性显示在页面上。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">img.error::after &#123;</span><br><span class="line">      content: attr(alt);</span><br><span class="line">      position: absolute;</span><br><span class="line">      left: 0;</span><br><span class="line">      bottom: 0;</span><br><span class="line">      width: 100%;</span><br><span class="line">      line-height: 2;</span><br><span class="line">      background-color: rgba(0, 0, 0, .5);</span><br><span class="line">      color: white;</span><br><span class="line">      font-size: 12px;</span><br><span class="line">      text-align: center;</span><br><span class="line">      white-space: nowrap;</span><br><span class="line">      overflow: hidden;</span><br><span class="line">      text-overflow: ellipsis;</span><br><span class="line">    &#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>假设img的 <code>alt</code> 属性是这样的。</p>
+<p><code>&lt;img src=&quot;https://miro.medium.com/xxx.jpg&quot; alt=&#39;Log of Medium&#39; &gt;</code></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0b5c575bcfb54944a95255f27ca08d78~tplv-k3u1fbpfcp-watermark.awebp" alt="017.png"></p>
+<p>作者：前端小智<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7062860159286149127">https://juejin.cn/post/7062860159286149127</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+        <p class="suffix-end">__END__</p>
+        <div class="suffix-box">
+            <div class="suffix-box-left">
+                <img src="https://cdn.jsdelivr.net/gh/first19326/cdn@master/static/image/sidebar/avatar.jpg" alt="Live For Code">
+            </div>
+            <div class="suffix-box-right">
+                <span class="suffix-box-title">文章作者</span>：Live For Code
+                <br>
+                <span class="suffix-box-title">文章出处</span>：<a href="/2022/02/15/10%E4%B8%AACSS%E6%8A%80%E5%B7%A7/" target="_blank">10个CSS技巧</a>
+                <br>
+                <span class="suffix-box-title">作者签名</span>：简单地活着, 肆意又精彩.
+                <br>
+                <span class="suffix-box-title">关于主题</span>：<a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+                <br>
+                <span class="suffix-box-title">版权声明</span>：文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+                <br>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+    <div class="article-footer">
+        
+        
+        <div class="article-prev-next">
             
-                <li>
-                    <span class="date">2022/02/15</span>
-                    <a href="/2022/02/15/10%E4%B8%AACSS%E6%8A%80%E5%B7%A7/" title="10个CSS技巧">    
-                        <span>10个CSS技巧</span>
-                    </a>
-                </li>
             
-                <li>
-                    <span class="date">2022/01/05</span>
-                    <a href="/2022/01/05/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC%E5%88%B0%E4%BA%AC%E4%B8%9C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" title="小程序跳转到京东小程序商品详情页">    
-                        <span>小程序跳转到京东小程序商品详情页</span>
-                    </a>
-                </li>
+                <a href="/2022/01/05/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC%E5%88%B0%E4%BA%AC%E4%B8%9C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" class="next-prefix">» </a> 下一篇：    <a href="/2022/01/05/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B7%B3%E8%BD%AC%E5%88%B0%E4%BA%AC%E4%B8%9C%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5/" title="发布于 2022-01-05 05:07">小程序跳转到京东小程序商品详情页</a>
             
-                <li>
-                    <span class="date">2022/01/05</span>
-                    <a href="/2022/01/05/uniapp-%E9%85%8D%E7%BD%AEaxios/" title="uniapp 配置axios">    
-                        <span>uniapp 配置axios</span>
-                    </a>
-                </li>
-            
-                <li>
-                    <span class="date">2022/01/05</span>
-                    <a href="/2022/01/05/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" title="工作中遇到的问题总结">    
-                        <span>工作中遇到的问题总结</span>
-                    </a>
-                </li>
-            
-                <li>
-                    <span class="date">2022/01/04</span>
-                    <a href="/2022/01/04/md%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" title="md基础语法">    
-                        <span>md基础语法</span>
-                    </a>
-                </li>
-            
-                <li>
-                    <span class="date">2022/01/04</span>
-                    <a href="/2022/01/04/hexo-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" title="hexo 常用指令">    
-                        <span>hexo 常用指令</span>
-                    </a>
-                </li>
-            
-        </ul>
+        </div>
+    </div>
+    
+    <div class="article-comments">
+        <div class="comments-title">
+            评论列表
+        </div>
+        <div class="comments-content">
+        </div>
     </div>
 
+</div>
 
     </div>
 </div>
